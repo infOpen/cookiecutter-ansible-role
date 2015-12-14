@@ -1,0 +1,43 @@
+---
+
+galaxy_info:
+  author: {{ cookiecutter.author_name }}
+  description: {{ cookiecutter.ansible_role_description }}
+  company: {{ cookiecutter.company_name ~ ' (' ~ cookiecutter.company_url ~ ')' }}
+  license: {{ cookiecutter.ansible_role_license }}
+  min_ansible_version: {{ cookiecutter.ansible_role_minimal_version }}
+  platforms:
+    {%- if not cookiecutter.ansible_role_platforms -%}
+      {{ ' ' ~ [] }}
+    {%- else %}
+      {%- for platform in cookiecutter.ansible_role_platforms.split(';') %}
+        {%- set platform_name = platform.split(':')[0] -%}
+        {%- set platform_versions = platform.split(':')[1] %}
+    - name: {{ platform_name }}
+      versions:
+        {%- if not platform_versions -%}
+          {{ ' ' ~ [] }}
+        {%- else %}
+          {%- for platform_version in platform_versions.split(',') %}
+        - {{ platform_version | trim }}
+          {%- endfor %}
+        {%- endif %}
+      {%- endfor %}
+    {%- endif %}
+  galaxy_tags:
+    {%- if not cookiecutter.ansible_role_tags -%}
+      {{ ' ' ~ [] }}
+    {%- else %}
+      {%- for tag in cookiecutter.ansible_role_tags.split(',') %}
+    - {{ tag | trim }}
+      {%- endfor %}
+    {%- endif %}
+dependencies:
+  {%- if not cookiecutter.ansible_role_dependencies -%}
+    {{ ' ' ~ [] }}
+  {%- else %}
+    {%- for dependency in cookiecutter.ansible_role_dependencies.split(',') %}
+  - {{ dependency | trim }}
+    {%- endfor %}
+  {%- endif %}
+
