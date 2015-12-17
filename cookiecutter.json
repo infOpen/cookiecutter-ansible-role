@@ -5,7 +5,7 @@
     "ansible_role_minimal_version": "1.9",
     "ansible_role_name": "role_name",
     "ansible_role_platforms": "",
-    "ansible_role_repository": "ansible-role-{{ cookiecutter.ansible_role_name }}",
+    "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
     "ansible_role_tags": "",
     "author_email": "foo@bar",
     "author_github_username": "foobar",
