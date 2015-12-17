@@ -15,6 +15,23 @@ This role contains two tests methods :
 - locally using Vagrant
 - automatically with Travis
 
+### Testing dependencies
+- install [Vagrant](https://www.vagrantup.com)
+- install [Vagrant serverspec plugin](https://github.com/jvoorhis/vagrant-serverspec)
+    $ vagrant plugin install vagrant-serverspec
+- install ruby dependencies
+    $ bundle install
+
+### Running tests
+
+#### Run playbook and test
+
+- if Vagrant box not running
+    $ vagrant up
+
+- if Vagrant box running
+    $ vagrant provision
+
 ## Role Variables
 
 ### Default role variables

@@ -1,0 +1,11 @@
+---
+
+# Tests for {{ cookiecutter.ansible_role_name }} role
+
+- hosts: localhost
+  remote_user: root
+  roles:
+    - "{{ cookiecutter.ansible_role_repository }}"
+  post_tasks:
+    - include: ./test_common.yml
+
