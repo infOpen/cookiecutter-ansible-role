@@ -42,6 +42,9 @@ def project_directories_tests(result):
     project_directories = [ 'defaults', 'files', 'handlers', 'meta',
                             'spec', 'tasks', 'templates', 'tests', 'vars' ]
 
+    with result.project.as_cwd():
+        subprocess.check_output(['ls', '-lha'])
+
     # Check project directories
     for project_directory in project_directories:
         assert result.project.join(project_directory).isdir()
