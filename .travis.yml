@@ -5,10 +5,7 @@
 dist: trusty
 sudo: required
 
-language: python
-
-env:
-  - "RVM_KEY=409B6B1796C275462A1703113804BB82D39DC0E3"
+language: ruby
 
 before_install:
   # Make sure everything's up to date.
@@ -22,13 +19,7 @@ install:
   - sudo pip install pytest-cookies
 
   # Install ruby dependencies to run serverspec tests
-  - >
-    gpg --keyserver hkp://keys.gnupg.net --recv-keys ${RVM_KEY}
-    && curl -L https://get.rvm.io | bash -s stable
-    && source ~/.rvm/scripts/rvm
-    && rvm install ruby
-    && gem install bundle
-    && gem install byebug
+  - gem install bundle && gem install byebug
 
 script:
   # Run tests
