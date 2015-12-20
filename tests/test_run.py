@@ -43,9 +43,15 @@ def project_directories_tests(result):
                             'spec', 'tasks', 'templates', 'tests', 'vars' ]
 
     with result.project.as_cwd():
-        subprocess.check_output(['pwd'])
-        subprocess.check_output(['ls', '-lha'])
-        subprocess.check_output(['ls', '-lha', '../'])
+        debug_a = subprocess.check_output(['pwd'],
+                                          stderr=subprocess.STDOUT)
+        print(debug_a.decode('utf-8'))
+        debug_b = subprocess.check_output(['ls', '-lha'],
+                                          stderr=subprocess.STDOUT)
+        print(debug_b.decode('utf-8'))
+        debug_c = subprocess.check_output(['ls', '-lha', '../'],
+                                           stderr=subprocess.STDOUT)
+        print(debug_c.decode('utf-8'))
 
     # Check project directories
     for project_directory in project_directories:
