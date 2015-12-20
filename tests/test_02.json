@@ -1,0 +1,15 @@
+{
+    "ansible_role_dependencies": "dep1,dep2",
+    "ansible_role_description": "Ansible role {{ cookiecutter.ansible_role_name }} description",
+    "ansible_role_license": "MIT",
+    "ansible_role_minimal_version": "1.9",
+    "ansible_role_name": "test_02",
+    "ansible_role_platforms": "",
+    "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
+    "ansible_role_tags": "tag01,tag02",
+    "author_email": "foo@bar",
+    "author_github_username": "foobar",
+    "author_name": "Foo Bar",
+    "company_name": "Foobar Inc.",
+    "company_url": "http://foo.bar"
+}
