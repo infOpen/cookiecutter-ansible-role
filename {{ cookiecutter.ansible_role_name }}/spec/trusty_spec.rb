@@ -1,6 +1,6 @@
 require 'serverspec'
 
-describe 'Dockerfile' do
+describe '{{ cookiecutter.ansible_role_name }} Ansible role' do
 
     # Tests
     #------
