@@ -1,4 +1,5 @@
 import json
+import pytest
 import subprocess
 import yaml
 
@@ -14,14 +15,14 @@ def common_tests(data, result):
     assert result.exception is None
 
     # Structure assert
-    project_root_tests(data, result)
-    project_directories_tests(result)
-    project_directories_with_main_file_tests(result)
-    project_testing_files_tests(result)
-    project_license_file_tests(result)
-    project_readme_file_tests(data, result)
-    project_meta_yaml_file_tests(data, result)
-    project_travis_yaml_file_tests(data, result)
+    assert_root_directory(data, result)
+    assert_directories(result)
+    assert_directories_with_main_file(result)
+    assert_testing_files(result)
+    assert_license_file(result)
+    assert_readme_file(data, result)
+    assert_meta_yaml_file(data, result)
+    assert_travis_yaml_file(data, result)
 
     # Execute serverspec tests for the role
     with result.project.as_cwd():
@@ -30,38 +31,38 @@ def common_tests(data, result):
 
 
 # Check root project
-def project_root_tests(data, result):
+def assert_root_directory(data, result):
     assert result.project.basename == data.get('ansible_role_name')
     assert result.project.isdir()
 
 
 # Check directories
-def project_directories_tests(result):
+def assert_directories(result):
 
     # Root directories
     project_directories = [ 'defaults', 'files', 'handlers', 'meta',
                             'spec', 'tasks', 'templates', 'tests', 'vars' ]
 
     # Check project directories
-    for project_directory in project_directories:
-        assert result.project.join(project_directory).isdir()
+    for directory in project_directories:
+        assert result.project.join(directory).isdir()
 
 
-# Check directories
-def project_directories_with_main_file_tests(result):
+# Check directories with main.yml file
+def assert_directories_with_main_file(result):
 
     # Root directories contains main.yml file
-    project_directories_with_main_file = [ 'defaults', 'handlers', 'meta',
-                                           'tasks', 'vars' ]
+    directories_with_main_file = [ 'defaults', 'handlers', 'meta',
+                                   'tasks', 'vars' ]
 
     # Check project directories with main.yml file
-    for project_directory in project_directories_with_main_file:
-        assert result.project.join(project_directory).isdir()
-        assert result.project.join(project_directory + '/main.yml').isfile()
+    for directory in directories_with_main_file:
+        assert result.project.join(directory).isdir()
+        assert result.project.join(directory + '/main.yml').isfile()
 
 
 # Check test files
-def project_testing_files_tests(result):
+def assert_testing_files(result):
 
     # All files about tests
     test_files = [
@@ -75,7 +76,7 @@ def project_testing_files_tests(result):
 
 
 # Check license file
-def project_license_file_tests(result):
+def assert_license_file(result):
 
     license_file = result.project.join('LICENSE')
     license_lines = license_file.readlines(cr=False)
@@ -85,7 +86,7 @@ def project_license_file_tests(result):
 
 
 # Check README file
-def project_readme_file_tests(data, result):
+def assert_readme_file(data, result):
 
     readme_file = result.project.join('README.md')
     readme_lines = readme_file.readlines(cr=False)
@@ -94,12 +95,11 @@ def project_readme_file_tests(data, result):
     assert 'Install %s package.' % data.get('ansible_role_name') \
         in readme_lines
     assert any('role: %s.%s' % (data.get('author_github_username'),
-        data.get('ansible_role_name')) \
-        in line for line in readme_lines)
-
+                                data.get('ansible_role_name'))
+               in line for line in readme_lines)
 
 # Check meta/main.yml file
-def project_meta_yaml_file_tests(data, result):
+def assert_meta_yaml_file(data, result):
 
     meta_file = result.project.join('meta/main.yml')
     assert meta_file.isfile()
@@ -110,7 +110,7 @@ def project_meta_yaml_file_tests(data, result):
 
 
 # Check .travis.yml file
-def project_travis_yaml_file_tests(data, result):
+def assert_travis_yaml_file(data, result):
 
     travis_file = result.project.join('.travis.yml')
     assert travis_file.isfile()
@@ -124,77 +124,24 @@ def project_travis_yaml_file_tests(data, result):
 # Tests
 #==============================================================================
 
-# Template test with default values
-def test_with_default_values(cookies):
+# Template test
+@pytest.mark.parametrize('data_filename, role_name', [
+    ('./cookiecutter.json', 'role_name'),
+    ('./tests/test_01.json', 'test_01'),
+    ('./tests/test_02.json', 'test_02'),
+    ('./tests/test_03.json', 'test_03'),
+    ('./tests/test_04.json', 'test_04')
+])
+def test_with_default_values(cookies, data_filename, role_name):
 
     # Load data file
-    with open('./cookiecutter.json') as data_file:
+    with open(data_filename) as data_file:
         data = json.load(data_file)
 
     # Create project
     result = cookies.bake(extra_context=data)
 
     # Common tests
-    assert data.get('ansible_role_name') == 'role_name'
-    common_tests(data, result)
-
-
-# Tests about values from test_01.json file
-def test_json_01(cookies):
-
-    # Load data file
-    with open('./tests/test_01.json') as data_file:
-        data = json.load(data_file)
-
-    # Build template with json data
-    result = cookies.bake(extra_context=data)
-
-    # Common tests
-    assert data.get('ansible_role_name') == 'test_01'
-    common_tests(data, result)
-
-
-# Tests about values from test_02.json file
-def test_json_02(cookies):
-
-    # Load data file
-    with open('./tests/test_02.json') as data_file:
-        data = json.load(data_file)
-
-    # Build template with json data
-    result = cookies.bake(extra_context=data)
-
-    # Common tests
-    assert data.get('ansible_role_name') == 'test_02'
-    common_tests(data, result)
-
-
-# Tests about values from test_03.json file
-def test_json_03(cookies):
-
-    # Load data file
-    with open('./tests/test_03.json') as data_file:
-        data = json.load(data_file)
-
-    # Build template with json data
-    result = cookies.bake(extra_context=data)
-
-    # Common tests
-    assert data.get('ansible_role_name') == 'test_03'
-    common_tests(data, result)
-
-
-# Tests about values from test_04.json file
-def test_json_04(cookies):
-
-    # Load data file
-    with open('./tests/test_04.json') as data_file:
-        data = json.load(data_file)
-
-    # Build template with json data
-    result = cookies.bake(extra_context=data)
-
-    # Common tests
-    assert data.get('ansible_role_name') == 'test_04'
+    assert data.get('ansible_role_name') == role_name
     common_tests(data, result)
 
