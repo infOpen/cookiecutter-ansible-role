@@ -132,7 +132,7 @@ def assert_travis_yaml_file(data, result):
     ('./tests/test_03.json', 'test_03'),
     ('./tests/test_04.json', 'test_04')
 ])
-def test_with_default_values(cookies, data_filename, role_name):
+def test_json_values(cookies, data_filename, role_name):
 
     # Load data file
     with open(data_filename) as data_file:
