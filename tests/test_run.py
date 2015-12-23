@@ -1,5 +1,6 @@
 import json
 import pytest
+import re
 import subprocess
 import yaml
 
@@ -91,12 +92,16 @@ def assert_readme_file(data, result):
     readme_file = result.project.join('README.md')
     readme_lines = readme_file.readlines(cr=False)
 
+    # Regex used to check galaxy role name
+    RE = re.compile('^\s*-\s*\{\s*role\s*:\s*%s\.%s\s*\}\s*$' % (
+                data.get('author_github_username'),
+                data.get('ansible_role_name')))
+    print(dir(RE))
+
     assert readme_file.isfile()
     assert 'Install %s package.' % data.get('ansible_role_name') \
         in readme_lines
-    assert any('role: %s.%s' % (data.get('author_github_username'),
-                                data.get('ansible_role_name'))
-               in line for line in readme_lines)
+    assert len(filter(bool, (RE.match(line) for line in readme_lines)))
 
 # Check meta/main.yml file
 def assert_meta_yaml_file(data, result):
