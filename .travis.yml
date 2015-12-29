@@ -7,6 +7,9 @@ sudo: required
 
 language: ruby
 
+env:
+  - ANSIBLE_ROLES_PATH=${TRAVIS_BUILD_DIR%/*/*}
+
 before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
