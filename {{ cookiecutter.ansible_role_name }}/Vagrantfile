@@ -7,6 +7,19 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
 
+  # Update system and install requirements
+  config.vm.provision "shell" do |sh|
+    sh.inline = "sudo apt-get update \
+                  && sudo apt-get install python-pip curl -y \
+                  && sudo pip install ansible pytest"
+  end
+
+  # Run pytest tests for filter plugins
+  config.vm.provision "shell" do |sh|
+    sh.inline = "cd /vagrant && rm -f tests/__pycache__/*.pyc && py.test -v"
+    sh.privileged = false
+  end
+
   # Run Ansible provisioning
   config.vm.provision "ansible" do |ansible|
 
