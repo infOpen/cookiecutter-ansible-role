@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Install ruby and gems
   config.vm.provision "shell" do |sh|
-    sh.inline = "gpg --keyserver hkp://keys.gnupg.net --recv-keys #{RVM_KEY} \
+    sh.inline = "gpg --keyserver hkp://pgp.mit.edu --recv-keys #{RVM_KEY} \
                   && curl -L https://get.rvm.io | bash -s stable \
                   && source ~/.rvm/scripts/rvm \
                   && rvm install ruby \
