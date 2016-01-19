@@ -27,8 +27,7 @@ def common_tests(data, result):
 
     # Execute serverspec tests for the role
     with result.project.as_cwd():
-        subprocess.check_output(['bundle', 'install'])
-        subprocess.check_output(['bundle', 'exec', 'rake'])
+        subprocess.check_output(['rvmsudo', 'rspec'])
 
 
 # Check root project
@@ -67,7 +66,7 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'Gemfile', 'Rakefile', 'spec/installation_spec.rb', 'tests/ansible.cfg',
+        'spec/installation_spec.rb', 'tests/ansible.cfg',
         'tests/inventory', 'tests/test_common.yml', 'tests/test_travis.yml',
         'tests/test_vagrant.yml', 'Vagrantfile', '.travis.yml' ]
 
