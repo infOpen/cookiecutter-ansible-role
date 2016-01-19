@@ -12,16 +12,26 @@ language: ruby
 rvm:
   - 2.1.5
 
+env:
+    - ANSIBLE_ROLES_PATH="${TRAVIS_BUILD_DIR%/*/*}"
+
 before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
 
-install:
+  
   # Install ruby dependencies to run serverspec tests
-  - bundle install
+  - rvmsudo gem install serverspec rspec
 
-  # Install Ansible.
-  - pip install ansible pytest
+  # Install Ansible and pytest.
+  - sudo pip install ansible paramiko PyYAML Jinja2 httplib2 six pytest
+
+  # Remove rvmsudo warning
+  - >
+    [[ $(sudo grep secure_path /etc/sudoers) ]]
+    && export rvmsudo_secure_path=1 || export rvmsudo_secure_path=0
+
+install:
 
   # Add ansible.cfg to pick up roles path.
   - "cp ./tests/ansible.cfg ./"
@@ -34,16 +44,19 @@ script:
   - py.test -v
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i tests/inventory tests/test_travis.yml --connection=local --sudo
+  - >
+    ansible-playbook -i tests/inventory tests/test_travis.yml
+    --connection=local --sudo
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   # Set change=1 due to a bug in ansible service module always return changed
   - >
-    ansible-playbook -i tests/inventory tests/test_travis.yml --connection=local --sudo
+    ansible-playbook -i tests/inventory tests/test_travis.yml
+    --connection=local --sudo
     | grep -q 'changed=[0].*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Run serverspec tests
-  - bundle exec rake
+  - rvmsudo rspec
 
