@@ -11,5 +11,8 @@
     "author_github_username": "foobar",
     "author_name": "Foo Bar",
     "company_name": "Foobar Inc.",
-    "company_url": "http://foo.bar"
+    "company_url": "http://foo.bar",
+    "_copy_without_render": [
+        "tests/test_vagrant.yml"
+    ]
 }
