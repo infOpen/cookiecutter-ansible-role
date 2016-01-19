@@ -1,6 +1,6 @@
 ---
 
-# Tests for {{ cookiecutter.ansible_role_name }} role
+# Role travis tests
 
 - hosts: localhost
   remote_user: root
