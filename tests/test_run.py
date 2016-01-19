@@ -27,8 +27,7 @@ def common_tests(data, result):
 
     # Execute serverspec tests for the role
     with result.project.as_cwd():
-        subprocess.check_output(['bundle', 'install'])
-        subprocess.check_output(['bundle', 'exec', 'rake'])
+        subprocess.check_output(['rvmsudo', 'rspec'])
 
 
 # Check root project

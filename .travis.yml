@@ -22,7 +22,7 @@ install:
   - sudo pip install pytest-cookies
 
   # Install ruby dependencies to run serverspec tests
-  - gem install bundle && gem install byebug
+  - gem install serverspec rspec
 
 script:
   # Run tests
