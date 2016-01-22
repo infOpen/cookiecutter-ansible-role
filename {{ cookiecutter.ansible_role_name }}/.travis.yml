@@ -19,7 +19,6 @@ before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
 
-  
   # Install ruby dependencies to run serverspec tests
   - rvmsudo gem install serverspec rspec
 
