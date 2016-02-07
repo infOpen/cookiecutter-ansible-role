@@ -6,6 +6,7 @@ galaxy_info:
   company: {{ cookiecutter.company_name ~ ' (' ~ cookiecutter.company_url ~ ')' }}
   license: {{ cookiecutter.ansible_role_license }}
   min_ansible_version: {{ cookiecutter.ansible_role_minimal_version }}
+  github_branch: {{ cookiecutter.ansible_role_github_branch }}
   platforms:
     {%- if not cookiecutter.ansible_role_platforms -%}
       {{ ' ' ~ [] }}
