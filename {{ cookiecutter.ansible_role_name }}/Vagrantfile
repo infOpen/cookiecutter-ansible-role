@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                             && sudo apt-get install python-pip curl git -y \
                             && sudo pip install paramiko PyYAML Jinja2 \
                                                 httplib2 six pytest \
+                                                ansible-lint \
                             && cd /usr/local/src \
                             && sudo git clone #{ANSIBLE_GIT_REPOSITORY} \
                             && cd ansible \
@@ -47,7 +48,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         || (sudo apt-get update \
                             && sudo apt-get install python-pip curl git -y \
                             && sudo pip install paramiko PyYAML Jinja2 \
-                                                httplib2 six pytest ansible)"
+                                                httplib2 six pytest ansible
+                                                ansible-lint)"
         end
       end
 
@@ -64,12 +66,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vm_config.vm.provision "trigger" do |trigger|
         trigger.fire do
           ENV['ANSIBLE_ROLES_PATH'] = '../'
-
-          # TODO: Add a test to get current dir to check if its the reponame
-          # or not to define role name into test playbook
           ENV['ANSIBLE_ROLE_NAME'] = File.basename(Dir.getwd)
-          puts ENV['ANSIBLE_ROLE_NAME']
         end
+      end
+
+      # Run Ansible linter
+      vm_config.vm.provision "shell" do |sh|
+        sh.inline = "cd /vagrant && ansible-list tasks/main.yml"
+        sh.privileged = false
       end
 
       # Run Ansible provisioning

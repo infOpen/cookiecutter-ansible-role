@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell" do |sh|
     sh.inline = "sudo apt-get update \
                   && sudo apt-get install python-pip python-dev curl -y \
-                  && sudo pip install pytest-cookies"
+                  && sudo pip install pytest-cookies ansible-lint"
   end
 
   # Install ruby and gems
