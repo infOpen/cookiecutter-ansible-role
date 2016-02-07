@@ -21,14 +21,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                   && curl -L https://get.rvm.io | bash -s stable \
                   && source ~/.rvm/scripts/rvm \
                   && rvm install ruby \
-                  && gem install bundle \
-                  && gem install byebug"
+                  && gem install rspec \
+                  && gem install serverspec"
     sh.privileged = false
   end
 
   # Run pytest tests
   config.vm.provision "shell" do |sh|
-    sh.inline = "cd /vagrant && py.test -v"
+    sh.inline = "cd /vagrant && rvmsudo_secure_path=1 py.test -v"
     sh.privileged = false
   end
 
