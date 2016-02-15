@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                         || (sudo apt-get update \
                             && sudo apt-get install python-pip curl git -y \
                             && sudo pip install paramiko PyYAML Jinja2 \
-                                                httplib2 six pytest ansible
+                                                httplib2 six pytest ansible \
                                                 ansible-lint)"
         end
       end
@@ -72,7 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       # Run Ansible linter
       vm_config.vm.provision "shell" do |sh|
-        sh.inline = "cd /vagrant && ansible-list tasks/main.yml"
+        sh.inline = "cd /vagrant && ansible-lint tasks/main.yml"
         sh.privileged = false
       end
 
