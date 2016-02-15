@@ -42,7 +42,7 @@ script:
   - ansible-playbook -i tests/inventory tests/test_travis.yml --syntax-check
 
   # Run linter on role
-  - ansible-lint task/main.yml
+  - ansible-lint tasks/main.yml
 
   # Run filter plugins tests
   - py.test -v
