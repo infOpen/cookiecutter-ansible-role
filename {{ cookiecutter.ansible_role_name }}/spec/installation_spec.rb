@@ -6,19 +6,17 @@ end
 
 describe '{{ cookiecutter.ansible_role_name }} Ansible role' do
 
-if ['debian', 'ubuntu'].include?(os[:family])
-    describe 'Specific Debian and Ubuntu family checks' do
+    # Declare variables
+    packages = Array[]
 
-        it 'install role packages' do
-            packages = Array[ 'apt' ]
-
-            packages.each do |pkg_name|
-                expect(package(pkg_name)).to be_installed
-            end
-        end
-
+    if ['debian', 'ubuntu'].include?(os[:family])
+        packages = Array[ 'apt' ]
     end
-end
 
+    it 'install role packages' do
+        packages.each do |pkg_name|
+            expect(package(pkg_name)).to be_installed
+        end
+    end
 end
 
