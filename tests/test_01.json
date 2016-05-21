@@ -8,6 +8,7 @@
     "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
     "ansible_role_tags": "",
     "author_email": "foo@bar",
+    "ansible_role_github_branch": "master",
     "author_github_username": "foobar",
     "author_name": "Foo Bar",
     "company_name": "Foobar Inc.",
