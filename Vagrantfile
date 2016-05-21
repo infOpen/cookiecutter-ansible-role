@@ -11,7 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Update system and install requirements
   config.vm.provision "shell" do |sh|
     sh.inline = "sudo apt-get update \
-                  && sudo apt-get install python-pip python-dev curl -y \
+                  && sudo apt-get install python-pip python-dev curl git \
+                                          git libffi-dev libssl-dev -y \
                   && sudo pip install pytest-cookies ansible-lint"
   end
 
