@@ -4,9 +4,9 @@ import re
 import subprocess
 import yaml
 
-#==============================================================================
 # Functions
-#==============================================================================
+# ==============================================================================
+
 
 # Common checks
 def common_tests(data, result):
@@ -40,8 +40,8 @@ def assert_root_directory(data, result):
 def assert_directories(result):
 
     # Root directories
-    project_directories = [ 'defaults', 'files', 'handlers', 'meta',
-                            'spec', 'tasks', 'templates', 'tests', 'vars' ]
+    project_directories = ['defaults', 'files', 'handlers', 'meta',
+                           'spec', 'tasks', 'templates', 'tests', 'vars']
 
     # Check project directories
     for directory in project_directories:
@@ -52,8 +52,8 @@ def assert_directories(result):
 def assert_directories_with_main_file(result):
 
     # Root directories contains main.yml file
-    directories_with_main_file = [ 'defaults', 'handlers', 'meta',
-                                   'tasks', 'vars' ]
+    directories_with_main_file = ['defaults', 'handlers', 'meta',
+                                  'tasks', 'vars']
 
     # Check project directories with main.yml file
     for directory in directories_with_main_file:
@@ -66,9 +66,9 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'spec/installation_spec.rb', 'tests/ansible.cfg',
-        'tests/inventory', 'tests/test_common.yml', 'tests/test_travis.yml',
-        'tests/test_vagrant.yml', 'Vagrantfile', '.travis.yml' ]
+        'spec/installation_spec.rb', 'tests/inventory',
+        'tests/test_common.yml', 'tests/test_travis.yml',
+        'tests/test_vagrant.yml', 'Vagrantfile', '.travis.yml']
 
     # Check project directories with main.yml file
     for test_file in test_files:
@@ -102,6 +102,7 @@ def assert_readme_file(data, result):
         in readme_lines
     assert len(filter(bool, (RE.match(line) for line in readme_lines)))
 
+
 # Check meta/main.yml file
 def assert_meta_yaml_file(data, result):
 
@@ -124,9 +125,8 @@ def assert_travis_yaml_file(data, result):
         assert yaml.load(content)
 
 
-#==============================================================================
 # Tests
-#==============================================================================
+# ==============================================================================
 
 # Template test
 @pytest.mark.parametrize('data_filename, role_name', [
@@ -148,4 +148,3 @@ def test_json_values(cookies, data_filename, role_name):
     # Common tests
     assert data.get('ansible_role_name') == role_name
     common_tests(data, result)
-
