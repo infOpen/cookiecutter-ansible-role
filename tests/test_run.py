@@ -25,10 +25,6 @@ def common_tests(data, result):
     assert_meta_yaml_file(data, result)
     assert_travis_yaml_file(data, result)
 
-    # Execute serverspec tests for the role
-    with result.project.as_cwd():
-        subprocess.check_output(['rvmsudo', 'rspec'])
-
 
 # Check root project
 def assert_root_directory(data, result):
@@ -41,7 +37,7 @@ def assert_directories(result):
 
     # Root directories
     project_directories = ['defaults', 'files', 'handlers', 'meta',
-                           'spec', 'tasks', 'templates', 'tests', 'vars']
+                           'tasks', 'templates', 'tests', 'vars']
 
     # Check project directories
     for directory in project_directories:
@@ -66,9 +62,9 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'spec/installation_spec.rb', 'tests/inventory',
-        'tests/test_common.yml', 'tests/test_travis.yml',
-        'tests/test_vagrant.yml', 'Vagrantfile', '.travis.yml']
+        'tests/testing_deployment.yml',
+        'testing_deployment.yml',
+        '.travis.yml']
 
     # Check project directories with main.yml file
     for test_file in test_files:

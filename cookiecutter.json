@@ -14,7 +14,7 @@
     "company_name": "Foobar Inc.",
     "company_url": "http://foo.bar",
     "_copy_without_render": [
-        "tests/test_vagrant.yml",
-        "tests/test_travis.yml"
+        "testing_deployment.yml",
+        "tests/testing_deployment.yml"
     ]
 }

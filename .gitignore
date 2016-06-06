@@ -4,6 +4,9 @@
 # Python bytecode
 *.pyc
 
+# Tox tests
+.tox
+
 # Pytest
 .cache
 
