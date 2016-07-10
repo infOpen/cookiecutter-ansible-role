@@ -15,6 +15,7 @@
     "company_url": "http://foo.bar",
     "_copy_without_render": [
         "testing_deployment.yml",
-        "tests/testing_deployment.yml"
+        "tests/testing_deployment.yml",
+        "tests/test_vagrant.yml"
     ]
 }
