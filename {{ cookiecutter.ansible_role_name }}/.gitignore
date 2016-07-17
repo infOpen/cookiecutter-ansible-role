@@ -1,4 +1,8 @@
+# Ansible
+*.retry
+
 # Swap files
+*.swo
 *.swp
 
 # Python bytecode
@@ -7,8 +11,9 @@
 # Pytest
 .cache
 
+# Tox
+.tox
+
 # Vagrant
 .vagrant
-
-# Bundle
-.bundle
+*.log
