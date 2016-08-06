@@ -1,6 +1,6 @@
 ---
 
-# Tests for openjdk-jre role
+# Tests for this role
 
 - hosts: 'all'
   remote_user: 'vagrant'
