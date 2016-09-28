@@ -1,8 +1,9 @@
 ---
 
-# Role travis tests
+# Role tests
 
 - hosts: 'all'
+  remote_user: "{{ lookup('env', 'VAGRANT') == 'true' | ternary('vagrant', 'root') }}"
   roles:
     - role: "{{ role_name }}"
   vars:
