@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         trigger.fire do
           ENV['ANSIBLE_ROLES_PATH'] = '../'
           ENV['ANSIBLE_ROLE_NAME'] = File.basename(Dir.getwd)
+          ENV['VAGRANT'] = 'true'
         end
       end
 
@@ -49,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       # Run Ansible provisioning
       vm_config.vm.provision 'ansible' do |ansible|
-        ansible.playbook = 'tests/test_vagrant.yml'
+        ansible.playbook = 'testing_deployment.yml'
         # Enable requirement if role has dependencies
         # ansible.galaxy_role_file = './requirements.yml'
         ansible.extra_vars = {

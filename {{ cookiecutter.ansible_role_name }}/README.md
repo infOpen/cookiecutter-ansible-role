@@ -11,26 +11,36 @@ and platform requirements are listed in the metadata file.
 
 ## Testing
 
-This role contains two tests methods :
-- locally using Vagrant
-- automatically with Travis
+This role has some testing methods.
 
-### Testing dependencies
-- install [Vagrant](https://www.vagrantup.com)
-- install [Vagrant serverspec plugin](https://github.com/jvoorhis/vagrant-serverspec)
-    $ vagrant plugin install vagrant-serverspec
-- install ruby dependencies
-    $ bundle install
+To use locally testing methods, you need to install Docker and/or Vagrant and Python requirements:
 
-### Running tests
+* Create and activate a virtualenv
+* Install requirements
 
-#### Run playbook and test
+```
+pip install -r requirements_dev.txt
+```
 
-- if Vagrant box not running
-    $ vagrant up
+### Automatically with Travis
 
-- if Vagrant box running
-    $ vagrant provision
+Tests runs automatically on Travis on push, release, pr, ... using docker testing containers
+
+### Locally with Docker
+
+You can use Docker to run tests on ephemeral containers.
+
+```
+make test-docker
+```
+
+### Locally with Vagrant
+
+You can use Vagrant to run tests on virtual machines.
+
+```
+make test-vagrant
+```
 
 ## Role Variables
 
