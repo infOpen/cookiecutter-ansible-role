@@ -60,5 +60,5 @@ test-vagrant:
 	vagrant up
 	vagrant provision
 	vagrant ssh-config > .vagrant/ssh-config
-	testinfra --hosts={{ cookiecutter.ansible_role_name }}_trusty --ssh-config=.vagrant/ssh-config --noconftest --sudo
-	testinfra --hosts={{ cookiecutter.ansible_role_name }}_xenial --ssh-config=.vagrant/ssh-config --noconftest --sudo
+	testinfra --hosts={{ cookiecutter.ansible_role_name }}-trusty --ssh-config=.vagrant/ssh-config --noconftest --sudo
+	testinfra --hosts={{ cookiecutter.ansible_role_name }}-xenial --ssh-config=.vagrant/ssh-config --noconftest --sudo
