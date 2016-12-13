@@ -1,7 +1,6 @@
 import json
 import pytest
 import re
-import subprocess
 import yaml
 
 # Functions
@@ -37,7 +36,8 @@ def assert_directories(result):
 
     # Root directories
     project_directories = ['defaults', 'files', 'handlers', 'meta',
-                           'tasks', 'templates', 'tests', 'vars']
+                           'tasks', 'templates', 'tests', 'vars',
+                           'vars/os_distribution', 'vars/os_family']
 
     # Check project directories
     for directory in project_directories:
@@ -69,6 +69,31 @@ def assert_testing_files(result):
     # Check project directories with main.yml file
     for test_file in test_files:
         assert result.project.join(test_file).isfile()
+
+
+# Check tasks/main.yml file
+def assert_tasks_main_file(result):
+
+    task_file = result.project.join('tasks/main.yml')
+    task_lines = task_file.readlines(cr=False)
+
+    assert task_file.isfile()
+    assert "- 'role::foobar::init'" in task_lines
+    assert (
+        'include: "{{ role_path }}/tasks/manage_variables.yml"') in task_lines
+
+
+# Check tasks/manage_variables.yml file
+def assert_tasks_manage_vars_file(result):
+
+    task_file = result.project.join('tasks/manage_variables.yml')
+    task_lines = task_file.readlines(cr=False)
+
+    assert task_file.isfile()
+    assert "register: 'foobar_check_os_release_vars'" in task_lines
+    assert (
+        'path: "{{ role_path }}/vars/os_family/'
+        '{{ ansible_os_family | lower }}.yml"') in task_lines
 
 
 # Check license file

@@ -1,0 +1,26 @@
+---
+
+ansible_groups: {}
+
+ansible_playbooks:
+  - 'testing_deployment.yml'
+
+vagrant_provider: 'virtualbox'
+vagrant_synced_folder_type: 'virtualbox'
+
+vagrant_servers:
+  - name: '{{ cookiecutter.ansible_role_name }}-trusty'
+    box: 'ubuntu/trusty64'
+    family: 'debian'
+  - name: '{{ cookiecutter.ansible_role_name }}-xenial'
+    box: 'ubuntu/xenial64'
+    family: 'debian'
+
+# Example of a vagrant server description.
+# Only name, box and family are mandatory:
+#  - name: '{{ cookiecutter.ansible_role_name }}-trusty'
+#    box: 'ubuntu/trusty64'
+#    family: 'debian'
+#    cpus: 1
+#    memory: 512
+#    forwarded_port: []
