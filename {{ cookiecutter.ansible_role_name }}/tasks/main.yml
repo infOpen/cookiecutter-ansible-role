@@ -2,3 +2,8 @@
 
 # Main tasks file for {{ cookiecutter.ansible_role_name }} role
 
+- name: 'INIT | Manage variables to use for our target'
+  include: "{{ '{{ role_path }}/tasks/manage_variables.yml' }}"
+  tags:
+    - 'role::{{ cookiecutter.ansible_role_name }}'
+    - 'role::{{ cookiecutter.ansible_role_name }}::init'
