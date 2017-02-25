@@ -19,3 +19,6 @@ tests/roles/
 # Vagrant
 .vagrant
 *.log
+
+# Molecule
+.molecule

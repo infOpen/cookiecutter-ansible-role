@@ -62,8 +62,8 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'tests/testing_deployment.yml',
-        'testing_deployment.yml',
+        'tests/playbook.yml',
+        'playbook.yml',
         '.travis.yml']
 
     # Check project directories with main.yml file
