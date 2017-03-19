@@ -3,6 +3,7 @@
 # All tasks about variables management
 
 - name: 'INIT | VARIABLES | Check if OS family vars file exists'
+  become: False
   stat:
     path: "{{ '{{ role_path }}/vars/os_family/{{ ansible_os_family | lower }}.yml' }}"
   register: '{{ cookiecutter.ansible_role_name | replace("-", "_") }}_check_os_family_vars'
@@ -10,6 +11,7 @@
 
 
 - name: 'INIT | VARIABLES | Check if OS distribution vars file exists'
+  become: False
   stat:
     path: "{{ '{{ role_path }}/vars/os_distribution/{{ ansible_distribution | lower }}.yml' }}"
   register: '{{ cookiecutter.ansible_role_name | replace("-", "_") }}_check_os_distribution_vars'
@@ -17,6 +19,7 @@
 
 
 - name: 'INIT | VARIABLES | Check if OS release vars file exists'
+  become: False
   stat:
     path: "{{ '{{ role_path }}/vars/os_distribution/{{ ansible_distribution | lower }}/{{ ansible_distribution_release | lower }}.yml' }}"
   register: '{{ cookiecutter.ansible_role_name | replace("-", "_") }}_check_os_release_vars'
