@@ -1,6 +1,7 @@
-import pytest
-from ansible import errors
+"""
+Fake test for plugins filters
+"""
+
 
 def test_fake():
     assert True
-
