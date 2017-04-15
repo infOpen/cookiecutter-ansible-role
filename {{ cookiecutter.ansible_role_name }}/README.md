@@ -11,35 +11,33 @@ and platform requirements are listed in the metadata file.
 
 ## Testing
 
-This role has some testing methods.
+This role use [Molecule](https://github.com/metacloud/molecule/) to run tests.
 
-To use locally testing methods, you need to install Docker and/or Vagrant and Python requirements:
+Locally, you can run tests on Docker (default driver) or Vagrant.
+Travis run tests using Docker driver only.
 
-* Create and activate a virtualenv
-* Install requirements
+Currently, tests are done on:
+- Debian Jessie
+- Ubuntu Trusty
+- Ubuntu Xenial
+and use:
+- Ansible 2.0.x
+- Ansible 2.1.x
+- Ansible 2.2.x
+- Ansible 2.3.x
 
-```
-pip install -r requirements_dev.txt
-```
+### Running tests
 
-### Automatically with Travis
-
-Tests runs automatically on Travis on push, release, pr, ... using docker testing containers
-
-### Locally with Docker
-
-You can use Docker to run tests on ephemeral containers.
-
-```
-make test-docker
-```
-
-### Locally with Vagrant
-
-You can use Vagrant to run tests on virtual machines.
+#### Using Docker driver
 
 ```
-make test-vagrant
+$ tox
+```
+
+#### Using Vagrant driver
+
+```
+$ MOLECULE_DRIVER=vagrant tox
 ```
 
 ## Role Variables

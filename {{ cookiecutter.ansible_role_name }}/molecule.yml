@@ -1,4 +1,5 @@
 ---
+
 ansible:
   extra_vars:
     ansible_python_interpreter: '/usr/bin/env python2.7'

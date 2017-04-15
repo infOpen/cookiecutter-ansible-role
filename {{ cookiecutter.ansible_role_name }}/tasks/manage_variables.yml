@@ -28,14 +28,14 @@
 
 - name: 'INIT | VARIABLES | Load OS family vars file'
   include_vars: "{{ '{{ role_path }}/vars/os_family/{{ ansible_os_family | lower }}.yml' }}"
-  when: "{{ '{{ ' ~ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_family_vars.stat.exists }}' }}"
+  when: "{{ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_family_vars.stat.exists' }}"
 
 
 - name: 'INIT | VARIABLES | Load OS distribution vars file'
   include_vars: "{{ '{{ role_path }}/vars/os_distribution/{{ ansible_distribution | lower }}.yml' }}"
-  when: "{{ '{{ ' ~ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_distribution_vars.stat.exists }}' }}"
+  when: "{{ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_distribution_vars.stat.exists' }}"
 
 
 - name: 'INIT | VARIABLES | Load OS release vars file'
   include_vars: "{{ '{{ role_path }}/vars/os_distribution/{{ ansible_distribution | lower }}/{{ ansible_distribution_release | lower }}.yml' }}"
-  when: "{{ '{{ ' ~ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_release_vars.stat.exists }}' }}"
+  when: "{{ (cookiecutter.ansible_role_name | replace("-", "_")) ~ '_check_os_release_vars.stat.exists' }}"

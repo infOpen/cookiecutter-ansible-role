@@ -1,0 +1,5 @@
+pytest==3.0.6
+pytest-cookies==0.2.0
+pyaml==16.12.2
+testinfra==1.5.3
+tox==2.6.0

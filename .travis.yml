@@ -2,29 +2,15 @@
 
 # Travis file for cookiecutter ansible role template
 
-dist: trusty
-sudo: required
-
-language: ruby
+language: python
 
 env:
   - ANSIBLE_ROLES_PATH=${TRAVIS_BUILD_DIR%/*/*}
 
-before_install:
-  # Make sure everything's up to date.
-  - sudo apt-get update -qq
-
-  # Install dependencies
-  - sudo apt-get install python-pip python-dev curl -y
-
 install:
   # Install python pytest plugin to cookiecutter template testing
-  - sudo pip install pytest-cookies
-
-  # Install ruby dependencies to run serverspec tests
-  - gem install serverspec rspec
+  - pip install -r requirements.txt
 
 script:
   # Run tests
-  - py.test -v
-
+  - tox
