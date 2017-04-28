@@ -20,6 +20,7 @@ Currently, tests are done on:
 - Debian Jessie
 - Ubuntu Trusty
 - Ubuntu Xenial
+
 and use:
 - Ansible 2.0.x
 - Ansible 2.1.x
