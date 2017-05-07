@@ -59,9 +59,11 @@ None
 
 ## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: {{ cookiecutter.author_github_username }}.{{ cookiecutter.ansible_role_name }} }
+``` yaml
+- hosts: servers
+  roles:
+    - { role: {{ cookiecutter.author_github_username }}.{{ cookiecutter.ansible_role_name }} }
+```
 
 ## License
 
@@ -77,4 +79,3 @@ None
 {% if cookiecutter.author_email -%}
 - {{ cookiecutter.author_email | replace('@', ' [at] ') }}
 {%- endif %}
-
