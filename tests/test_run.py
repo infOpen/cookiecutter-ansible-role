@@ -27,7 +27,8 @@ def common_tests(data, result):
 
 # Check root project
 def assert_root_directory(data, result):
-    assert result.project.basename == data.get('ansible_role_name')
+    assert result.project.basename == 'ansible-role-{}'.format(
+        data.get('ansible_role_name'))
     assert result.project.isdir()
 
 
