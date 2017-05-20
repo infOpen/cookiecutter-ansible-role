@@ -5,4 +5,4 @@
 branch: 'develop'
 requirements:
   - 'requirements.txt'
-  - 'ansible-role-{{ cookiecutter.ansible_role_name }}/requirements.txt'
+  - 'ansible-role-%7B%7B%20cookiecutter.ansible_role_name%20%7D%7D/requirements.txt'
