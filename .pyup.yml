@@ -4,9 +4,5 @@
 
 branch: 'develop'
 requirements:
-  - 'requirements.txt':
-      updates: 'all'
-      pin: True
-  - 'ansible-role-{{ cookiecutter.ansible_role_name }}/requirements.txt':
-      updates: 'all'
-      pin: True
+  - 'requirements.txt'
+  - 'ansible-role-{{ cookiecutter.ansible_role_name }}/requirements.txt'
