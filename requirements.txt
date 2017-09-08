@@ -1,4 +1,4 @@
-pytest==3.2.1
+pytest==3.2.2
 pytest-cookies==0.2.0
 pyaml==17.8.0
 testinfra==1.6.5
