@@ -3,7 +3,7 @@
     "ansible_role_dependencies": "",
     "ansible_role_description": "Ansible role description",
     "ansible_role_license": "MIT",
-    "ansible_role_minimal_version": "2.0",
+    "ansible_role_minimal_version": "2.2",
     "ansible_role_github_branch": "master",
     "ansible_role_platforms": "",
     "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
@@ -12,5 +12,10 @@
     "author_github_username": "foobar",
     "author_name": "Foo Bar",
     "company_name": "Foobar Inc.",
-    "company_url": "http://foo.bar"
+    "company_url": "http://foo.bar",
+    "_copy_without_render": [
+      "molecule/default/create.yml",
+      "molecule/default/destroy.yml",
+      "molecule/default/Dockerfile.j2"
+    ]
 }
