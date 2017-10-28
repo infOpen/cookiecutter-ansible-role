@@ -38,7 +38,8 @@ def assert_directories(result):
     # Root directories
     project_directories = ['defaults', 'files', 'handlers', 'meta',
                            'tasks', 'templates', 'tests', 'vars',
-                           'vars/os_distribution', 'vars/os_family']
+                           'vars/os_distribution', 'vars/os_family',
+                           'molecule', 'molecule/default']
 
     # Check project directories
     for directory in project_directories:
@@ -63,8 +64,14 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'tests/playbook.yml',
-        'playbook.yml',
+        'molecule/default/create.yml',
+        'molecule/default/destroy.yml',
+        'molecule/default/Dockerfile.j2',
+        'molecule/default/molecule.yml',
+        'molecule/default/playbook.yml',
+        'molecule/default/prepare.yml',
+        'molecule/default/tests/test_installation.py',
+        'tests/test_filter_plugins.py',
         '.travis.yml']
 
     # Check project directories with main.yml file
