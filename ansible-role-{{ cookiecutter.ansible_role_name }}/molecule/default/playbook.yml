@@ -4,7 +4,6 @@
 
 - name: 'Converge | Prerequisites tasks'
   hosts: '{{ cookiecutter.ansible_role_name }}-docker-xenial'
-  name: 'Install tests prerequisites'
   gather_facts: False
   tasks:
     - name: 'PREREQUISITES | APT | Do an apt-get update'
