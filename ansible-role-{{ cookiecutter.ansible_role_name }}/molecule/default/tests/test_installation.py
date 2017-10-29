@@ -3,7 +3,6 @@ Role tests
 """
 
 import os
-import pytest
 from testinfra.utils.ansible_runner import AnsibleRunner
 
 testinfra_hosts = AnsibleRunner(
