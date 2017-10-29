@@ -7,18 +7,18 @@ driver:
 lint:
   name: 'yamllint'
 platforms:
-  - name: 'docker-docker-jessie'
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-jessie"
     image: 'minimum2scp/systemd-jessie:latest'
     command: '/sbin/init'
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
-  - name: 'rsync-server-docker-xenial'
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-xenial"
     image: 'ubuntu:xenial'
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
-  - name: 'rsync-server-docker-trusty'
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-trusty"
     image: 'ubuntu:trusty'
     cap_add:
       - 'SYS_PTRACE'
