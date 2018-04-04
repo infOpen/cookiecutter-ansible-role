@@ -5,4 +5,6 @@
 branch: 'develop'
 requirements:
   - 'requirements.txt'
+  - 'tox.ini'
   - 'ansible-role-%7B%7B%20cookiecutter.ansible_role_name%20%7D%7D/requirements.txt'
+  - 'ansible-role-%7B%7B%20cookiecutter.ansible_role_name%20%7D%7D/tox.ini'
