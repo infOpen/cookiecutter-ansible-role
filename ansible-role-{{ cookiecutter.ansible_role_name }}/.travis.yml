@@ -17,10 +17,6 @@ env:
     - TOXENV='py27-ansible24'
     - TOXENV='py27-ansible25'
 
-matrix:
-  allow_failures:
-    - env: TOXENV=py27-ansible25
-
 install:
   - 'pip install tox-travis'
 

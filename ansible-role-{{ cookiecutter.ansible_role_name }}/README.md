@@ -25,6 +25,7 @@ and use:
 - Ansible 2.2.x
 - Ansible 2.3.x
 - Ansible 2.4.x
+- Ansible 2.5.x
 
 ### Running tests
 
