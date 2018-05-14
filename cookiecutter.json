@@ -1,7 +1,7 @@
 {
     "ansible_role_name": "role_name",
     "ansible_role_dependencies": "",
-    "ansible_role_description": "Ansible role description",
+    "ansible_role_description": "Ansible role to install and configure {{ cookiecutter.ansible_role_name }}",
     "ansible_role_license": "MIT",
     "ansible_role_minimal_version": "2.4",
     "ansible_role_github_branch": "master",
