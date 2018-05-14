@@ -5,7 +5,7 @@
     "ansible_role_license": "MIT",
     "ansible_role_minimal_version": "2.4",
     "ansible_role_github_branch": "master",
-    "ansible_role_platforms": "",
+    "ansible_role_platforms": "Debian:jessie;Ubuntu:xenial",
     "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
     "ansible_role_tags": "",
     "author_email": "foo@bar",
