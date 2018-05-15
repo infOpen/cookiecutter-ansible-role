@@ -19,11 +19,6 @@ platforms:
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
-  - name: "{{ cookiecutter.ansible_role_name}}-docker-trusty"
-    image: 'ubuntu:trusty'
-    cap_add:
-      - 'SYS_PTRACE'
-    privileged: True
 provisioner:
   name: 'ansible'
   lint:
