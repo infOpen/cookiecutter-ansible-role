@@ -18,12 +18,9 @@ See molecule documentation to use other backend.
 
 Currently, tests are done on:
 - Debian Jessie
-- Ubuntu Trusty
 - Ubuntu Xenial
 
 and use:
-- Ansible 2.2.x
-- Ansible 2.3.x
 - Ansible 2.4.x
 - Ansible 2.5.x
 
