@@ -13,8 +13,20 @@ platforms:
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-stretch"
+    image: 'minimum2scp/systemd-stretch:latest'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
   - name: "{{ cookiecutter.ansible_role_name}}-docker-xenial"
     image: 'solita/ubuntu-systemd:16.04'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-bionic"
+    image: 'solita/ubuntu-systemd:18.04'
     command: '/sbin/init'
     cap_add:
       - 'SYS_PTRACE'
