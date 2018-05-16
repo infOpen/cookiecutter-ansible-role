@@ -64,12 +64,9 @@ def assert_testing_files(result):
 
     # All files about tests
     test_files = [
-        'molecule/default/create.yml',
-        'molecule/default/destroy.yml',
         'molecule/default/Dockerfile.j2',
         'molecule/default/molecule.yml',
         'molecule/default/playbook.yml',
-        'molecule/default/prepare.yml',
         'molecule/default/tests/test_installation.py',
         'tests/test_filter_plugins.py',
         '.travis.yml']

@@ -1,6 +1,5 @@
-docker==2.5.1  # pyup: <3
-molecule==2.13.1
+docker==3.3.0
+molecule==2.14.0
 pytest==3.5.1
 python-vagrant==0.5.15
-testinfra==1.13.0
 tox==3.0.0
