@@ -25,6 +25,12 @@ platforms:
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
+  - name: "{{ cookiecutter.ansible_role_name}}-docker-bionic"
+    image: 'solita/ubuntu-systemd:18.04'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
 provisioner:
   name: 'ansible'
   lint:

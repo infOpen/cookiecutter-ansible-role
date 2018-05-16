@@ -20,6 +20,7 @@ Currently, tests are done on:
 - Debian Jessie
 - Debian Stretch
 - Ubuntu Xenial
+- Ubuntu Bionic
 
 and use:
 - Ansible 2.4.x
