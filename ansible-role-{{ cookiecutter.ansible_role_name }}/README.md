@@ -18,6 +18,7 @@ See molecule documentation to use other backend.
 
 Currently, tests are done on:
 - Debian Jessie
+- Debian Stretch
 - Ubuntu Xenial
 
 and use:
