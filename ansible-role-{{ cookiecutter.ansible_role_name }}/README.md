@@ -34,6 +34,14 @@ and use:
 $ tox
 ```
 
+You can also configure molecule options and molecule command using environment variables:
+* `MOLECULE_OPTIONS` Default: "--debug"
+* `MOLECULE_COMMAND` Default: "test"
+
+```
+$ MOLECULE_OPTIONS='' MOLECULE_COMMAND=converge tox
+```
+
 ## Role Variables
 
 ### Default role variables
