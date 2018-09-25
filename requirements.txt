@@ -1,5 +1,5 @@
 pytest==3.7.1
 pytest-cookies==0.3.0
 pyaml==17.12.1
-testinfra==1.14.1
+testinfra==1.16.0
 tox==3.1.2
