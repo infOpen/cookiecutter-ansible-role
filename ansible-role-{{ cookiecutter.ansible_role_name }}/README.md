@@ -25,6 +25,8 @@ Currently, tests are done on:
 and use:
 - Ansible 2.4.x
 - Ansible 2.5.x
+- Ansible 2.6.x
+- Ansible 2.7.x
 
 ### Running tests
 
