@@ -1,5 +1,5 @@
-docker==3.3.0
-molecule==2.14.0
-pytest==3.5.1
+docker==3.5.1
+molecule==2.19.0
+pytest==3.9.3
 python-vagrant==0.5.15
-tox==3.0.0
+tox==3.5.3

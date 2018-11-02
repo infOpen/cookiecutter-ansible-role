@@ -29,23 +29,23 @@ Cookiecutter template for Ansible role
 
 ### Role default variables
 
-This part need to be completed manually
+This part need to be completed manually.
 
 ### Role dependencies and role tags
 
-Use this pattern :
+Use this pattern:
 
     dep1, dep2 and/or tag1, tag2
 
-We do a split with the "," separator to build these lists.
+We do a split with the `,` separator to build these lists.
 An empty string will be changed to an empty array.
 
 ### Role platforms
 
-Use this pattern :
+Use this pattern:
 
     plaform:version1,version2;platform2:version1,version2
 
-We do a split with the ";" separator between platform and "," separator
+We do a split with the `;` separator between platform and `,` separator
 to build version list for each platform.
 
