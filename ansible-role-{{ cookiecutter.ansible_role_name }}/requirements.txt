@@ -2,4 +2,4 @@ docker==3.7.0
 molecule==2.19.0
 pytest==4.0.1
 python-vagrant==0.5.15
-tox==3.7.0
+tox==3.16.0
