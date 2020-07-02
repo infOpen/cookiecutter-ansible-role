@@ -1,6 +1,8 @@
 # {{ cookiecutter.ansible_role_name }}
 
-[![Build Status](https://travis-ci.org/{{ cookiecutter.ansible_role_repository }}.svg?branch=master)](https://travis-ci.org/{{ cookiecutter.ansible_role_repository }})
+[![CI](https://github.com/{{ cookiecutter.ansible_role_repository }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.ansible_role_repository }}/actions)
+[![Updates](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
+[![Python 3](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/python-3-shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
 
 Install {{ cookiecutter.ansible_role_name }} package.
 
@@ -13,7 +15,7 @@ and platform requirements are listed in the metadata file.
 
 This role use [Molecule](https://github.com/ansible-community/molecule) to run tests.
 
-Local and Travis tests run tests on Docker by default.
+Local and Github Actions tests run tests on Docker by default.
 See molecule documentation to use other backend.
 
 Currently, tests are done on:

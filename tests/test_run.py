@@ -22,7 +22,7 @@ def common_tests(data, result):
     assert_license_file(result)
     assert_readme_file(data, result)
     assert_meta_yaml_file(data, result)
-    assert_travis_yaml_file(data, result)
+    assert_github_actions_yaml_file(data, result)
 
 
 # Check root project
@@ -138,14 +138,14 @@ def assert_meta_yaml_file(data, result):
         assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
-# Check .travis.yml file
-def assert_travis_yaml_file(data, result):
+# Check .github/workflows/ci.yml file
+def assert_github_actions_yaml_file(data, result):
 
-    travis_file = result.project.join('.travis.yml')
-    assert travis_file.isfile()
+    action_file = result.project.join('.github/workflows/ci.yml')
+    assert action_file.isfile()
 
     # Test if yaml file is valid
-    with open(str(travis_file.realpath()), 'r') as content:
+    with open(str(action_file.realpath()), 'r') as content:
         assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
