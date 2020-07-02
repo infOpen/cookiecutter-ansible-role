@@ -4,6 +4,9 @@
 
 language: python
 
+python:
+  - '3.7'
+
 env:
   - ANSIBLE_ROLES_PATH=${TRAVIS_BUILD_DIR%/*/*}
 
