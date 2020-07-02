@@ -43,7 +43,9 @@ This part need to be completed manually.
 
 Use this pattern:
 
-    dep1, dep2 and/or tag1, tag2
+```
+dep1, dep2 and/or tag1, tag2
+```
 
 We do a split with the `,` separator to build these lists.
 An empty string will be changed to an empty array.
@@ -52,7 +54,9 @@ An empty string will be changed to an empty array.
 
 Use this pattern:
 
-    plaform:version1,version2;platform2:version1,version2
+```
+plaform:version1,version2;platform2:version1,version2
+```
 
 We do a split with the `;` separator between platform and `,` separator
 to build version list for each platform.
