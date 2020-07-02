@@ -57,3 +57,10 @@ Use this pattern:
 We do a split with the `;` separator between platform and `,` separator
 to build version list for each platform.
 
+## Run tests
+
+Requirements: Docker and docker-compose installed
+
+```
+docker-compose up --build --force-recreate
+```
