@@ -65,8 +65,8 @@ def assert_testing_files(result):
     # All files about tests
     test_files = [
         'molecule/default/Dockerfile.j2',
+        'molecule/default/converge.yml',
         'molecule/default/molecule.yml',
-        'molecule/default/playbook.yml',
         'molecule/default/tests/test_installation.py',
         'tests/test_filter_plugins.py',
         '.travis.yml']
@@ -118,16 +118,14 @@ def assert_readme_file(data, result):
     readme_lines = readme_file.readlines(cr=False)
 
     # Regex used to check galaxy role name
-    RE = re.compile('^\s*-\s*\{\s*role\s*:\s*%s\.%s\s*\}\s*$' % (
+    RE = re.compile(r'^\s*-\s*\{\s*role\s*:\s*%s\.%s\s*\}\s*$' % (
                 data.get('author_github_username'),
                 data.get('ansible_role_name')))
-    print(dir(RE))
 
     assert readme_file.isfile()
     assert 'Install %s package.' % data.get('ansible_role_name') \
         in readme_lines
-    assert len(filter(bool, (RE.match(line) for line in readme_lines)))
-
+    assert len([ True for line in readme_lines if RE.match(line)]) == 1
 
 # Check meta/main.yml file
 def assert_meta_yaml_file(data, result):
@@ -137,7 +135,7 @@ def assert_meta_yaml_file(data, result):
 
     # Test if yaml file is valid
     with open(str(meta_file.realpath()), 'r') as content:
-        assert yaml.load(content)
+        assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
 # Check .travis.yml file
@@ -148,7 +146,7 @@ def assert_travis_yaml_file(data, result):
 
     # Test if yaml file is valid
     with open(str(travis_file.realpath()), 'r') as content:
-        assert yaml.load(content)
+        assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
 # Tests

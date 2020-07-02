@@ -9,21 +9,29 @@ Cookiecutter template for Ansible role
 
 ## Default variables
 
-    {
-        "ansible_role_dependencies": "",
-        "ansible_role_description": "Ansible role description",
-        "ansible_role_license": "MIT",
-        "ansible_role_minimal_version": "1.9",
-        "ansible_role_name": "role_name",
-        "ansible_role_platforms": "",
-        "ansible_role_repository": "ansible-role-{{ cookiecutter.ansible_role_name }}",
-        "ansible_role_tags": "",
-        "author_email": "foo@bar",
-        "author_github_username": "foobar",
-        "author_name": "Foo Bar",
-        "company_name": "Foobar Inc.",
-        "company_url": "http://foo.bar"
-    }
+```json
+{
+    "ansible_role_name": "role_name",
+    "ansible_role_dependencies": "",
+    "ansible_role_description": "Ansible role to install and configure {{ cookiecutter.ansible_role_name }}",
+    "ansible_role_license": "MIT",
+    "ansible_role_minimal_version": "2.8",
+    "ansible_role_github_branch": "master",
+    "ansible_role_platforms": "Debian:stretch,buster;Ubuntu:focal,bionic;EL:7,8",
+    "ansible_role_repository": "infOpen/ansible-role-{{ cookiecutter.ansible_role_name }}",
+    "ansible_role_tags": "",
+    "author_email": "foo@bar",
+    "author_github_username": "foobar",
+    "author_name": "Foo Bar",
+    "company_name": "Foobar Inc.",
+    "company_url": "http://foo.bar",
+    "_copy_without_render": [
+      "molecule/default/create.yml",
+      "molecule/default/destroy.yml",
+      "molecule/default/Dockerfile.j2"
+    ]
+}
+```
 
 ## Additional information
 

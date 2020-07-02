@@ -11,23 +11,22 @@ and platform requirements are listed in the metadata file.
 
 ## Testing
 
-This role use [Molecule](https://github.com/metacloud/molecule/) to run tests.
+This role use [Molecule](https://github.com/ansible-community/molecule) to run tests.
 
 Local and Travis tests run tests on Docker by default.
 See molecule documentation to use other backend.
 
 Currently, tests are done on:
 - CentOS 7
-- Debian Jessie
+- CentOS 8
+- Debian Buster
 - Debian Stretch
-- Ubuntu Xenial
 - Ubuntu Bionic
+- Ubuntu Focal
 
 and use:
-- Ansible 2.4.x
-- Ansible 2.5.x
-- Ansible 2.6.x
-- Ansible 2.7.x
+- Ansible 2.8.x
+- Ansible 2.9.x
 
 ### Running tests
 
