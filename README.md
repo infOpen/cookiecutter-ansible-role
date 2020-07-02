@@ -1,7 +1,6 @@
 # cookiecutter-ansible-role
 
-[![Build Status](https://img.shields.io/travis/infOpen/cookiecutter-ansible-role/master.svg?label=travis_master)](https://travis-ci.org/infOpen/cookiecutter-ansible-role)
-[![Build Status](https://img.shields.io/travis/infOpen/cookiecutter-ansible-role/develop.svg?label=travis_develop)](https://travis-ci.org/infOpen/cookiecutter-ansible-role)
+[![CI](https://github.com/infOpen/cookiecutter-ansible-role/workflows/CI/badge.svg)](https://github.com/infOpen/cookiecutter-ansible-role/actions)
 [![Updates](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/shield.svg)](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/)
 [![Python 3](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/)
 
@@ -61,7 +60,7 @@ plaform:version1,version2;platform2:version1,version2
 We do a split with the `;` separator between platform and `,` separator
 to build version list for each platform.
 
-## Run tests
+## Run tests locally
 
 Requirements: Docker and docker-compose installed
 

@@ -69,7 +69,7 @@ def assert_testing_files(result):
         'molecule/default/molecule.yml',
         'molecule/default/tests/test_installation.py',
         'tests/test_filter_plugins.py',
-        '.travis.yml']
+        '.github/workflows/ci.yml']
 
     # Check project directories with main.yml file
     for test_file in test_files:
