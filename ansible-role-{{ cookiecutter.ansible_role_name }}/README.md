@@ -1,6 +1,9 @@
 # {{ cookiecutter.ansible_role_name }}
 
-[![Build Status](https://travis-ci.org/{{ cookiecutter.ansible_role_repository }}.svg?branch=master)](https://travis-ci.org/{{ cookiecutter.ansible_role_repository }})
+[![CI](https://github.com/{{ cookiecutter.ansible_role_repository }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.ansible_role_repository }}/actions)
+[![Mergify Status][mergify-status]][mergify]
+[![Updates](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
+[![Python 3](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/python-3-shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
 
 Install {{ cookiecutter.ansible_role_name }} package.
 
@@ -11,23 +14,22 @@ and platform requirements are listed in the metadata file.
 
 ## Testing
 
-This role use [Molecule](https://github.com/metacloud/molecule/) to run tests.
+This role use [Molecule](https://github.com/ansible-community/molecule) to run tests.
 
-Local and Travis tests run tests on Docker by default.
+Local and Github Actions tests run tests on Docker by default.
 See molecule documentation to use other backend.
 
 Currently, tests are done on:
 - CentOS 7
-- Debian Jessie
+- CentOS 8
+- Debian Buster
 - Debian Stretch
-- Ubuntu Xenial
 - Ubuntu Bionic
+- Ubuntu Focal
 
 and use:
-- Ansible 2.4.x
-- Ansible 2.5.x
-- Ansible 2.6.x
-- Ansible 2.7.x
+- Ansible 2.8.x
+- Ansible 2.9.x
 
 ### Running tests
 
@@ -83,3 +85,6 @@ None
 {% if cookiecutter.author_email -%}
 - {{ cookiecutter.author_email | replace('@', ' [at] ') }}
 {%- endif %}
+
+[mergify]: https://mergify.io
+[mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/{{ cookiecutter.ansible_role_repository }}&style=flat

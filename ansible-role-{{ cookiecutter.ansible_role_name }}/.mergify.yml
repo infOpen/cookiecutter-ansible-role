@@ -1,0 +1,11 @@
+---
+
+pull_request_rules:
+  - name: 'Automatic merge PyUP updates on CI success'
+    conditions:
+      - 'author=pyup-bot'
+      - 'base=develop'
+      - 'status-success=tests'
+    actions:
+      merge:
+        method: 'merge'
