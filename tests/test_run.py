@@ -22,7 +22,7 @@ def common_tests(data, result):
     assert_license_file(result)
     assert_readme_file(data, result)
     assert_meta_yaml_file(data, result)
-    assert_travis_yaml_file(data, result)
+    assert_github_actions_yaml_file(data, result)
 
 
 # Check root project
@@ -65,11 +65,11 @@ def assert_testing_files(result):
     # All files about tests
     test_files = [
         'molecule/default/Dockerfile.j2',
+        'molecule/default/converge.yml',
         'molecule/default/molecule.yml',
-        'molecule/default/playbook.yml',
         'molecule/default/tests/test_installation.py',
         'tests/test_filter_plugins.py',
-        '.travis.yml']
+        '.github/workflows/ci.yml']
 
     # Check project directories with main.yml file
     for test_file in test_files:
@@ -118,16 +118,14 @@ def assert_readme_file(data, result):
     readme_lines = readme_file.readlines(cr=False)
 
     # Regex used to check galaxy role name
-    RE = re.compile('^\s*-\s*\{\s*role\s*:\s*%s\.%s\s*\}\s*$' % (
+    RE = re.compile(r'^\s*-\s*\{\s*role\s*:\s*%s\.%s\s*\}\s*$' % (
                 data.get('author_github_username'),
                 data.get('ansible_role_name')))
-    print(dir(RE))
 
     assert readme_file.isfile()
     assert 'Install %s package.' % data.get('ansible_role_name') \
         in readme_lines
-    assert len(filter(bool, (RE.match(line) for line in readme_lines)))
-
+    assert len([ True for line in readme_lines if RE.match(line)]) == 1
 
 # Check meta/main.yml file
 def assert_meta_yaml_file(data, result):
@@ -137,18 +135,18 @@ def assert_meta_yaml_file(data, result):
 
     # Test if yaml file is valid
     with open(str(meta_file.realpath()), 'r') as content:
-        assert yaml.load(content)
+        assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
-# Check .travis.yml file
-def assert_travis_yaml_file(data, result):
+# Check .github/workflows/ci.yml file
+def assert_github_actions_yaml_file(data, result):
 
-    travis_file = result.project.join('.travis.yml')
-    assert travis_file.isfile()
+    action_file = result.project.join('.github/workflows/ci.yml')
+    assert action_file.isfile()
 
     # Test if yaml file is valid
-    with open(str(travis_file.realpath()), 'r') as content:
-        assert yaml.load(content)
+    with open(str(action_file.realpath()), 'r') as content:
+        assert yaml.load(content, Loader=yaml.SafeLoader)
 
 
 # Tests
