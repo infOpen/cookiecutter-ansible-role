@@ -5,7 +5,7 @@ pull_request_rules:
     conditions:
       - 'author=pyup-bot'
       - 'base=develop'
-      - 'status-success=continuous-integration/travis-ci'
+      - 'status-success=tests'
     actions:
       merge:
         method: 'merge'

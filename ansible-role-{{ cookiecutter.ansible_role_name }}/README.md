@@ -1,6 +1,7 @@
 # {{ cookiecutter.ansible_role_name }}
 
 [![CI](https://github.com/{{ cookiecutter.ansible_role_repository }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.ansible_role_repository }}/actions)
+[![Mergify Status][mergify-status]][mergify]
 [![Updates](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
 [![Python 3](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/python-3-shield.svg)](https://pyup.io/repos/github/{{ cookiecutter.ansible_role_repository }}/)
 
@@ -84,3 +85,6 @@ None
 {% if cookiecutter.author_email -%}
 - {{ cookiecutter.author_email | replace('@', ' [at] ') }}
 {%- endif %}
+
+[mergify]: https://mergify.io
+[mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/{{ cookiecutter.ansible_role_repository }}&style=flat

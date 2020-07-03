@@ -1,6 +1,7 @@
 # cookiecutter-ansible-role
 
 [![CI](https://github.com/infOpen/cookiecutter-ansible-role/workflows/CI/badge.svg)](https://github.com/infOpen/cookiecutter-ansible-role/actions)
+[![Mergify Status][mergify-status]][mergify]
 [![Updates](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/shield.svg)](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/)
 [![Python 3](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/cookiecutter-ansible-role/)
 
@@ -67,3 +68,6 @@ Requirements: Docker and docker-compose installed
 ```
 docker-compose up --build --force-recreate
 ```
+
+[mergify]: https://mergify.io
+[mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/infOpen/cookiecutter-ansible-role&style=flat
