@@ -11,31 +11,43 @@ lint: |
   flake8
 platforms:
   - name: "{{ cookiecutter.ansible_role_name}}-docker-centos7"
+    groups:
+      - 'centos'
     image: 'jrei/systemd-centos:7'
     privileged: True
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "{{ cookiecutter.ansible_role_name}}-docker-centos8"
-    image: 'jrei/systemd-centos:7'
+    groups:
+      - 'centos'
+    image: 'jrei/systemd-centos:8'
     privileged: True
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "{{ cookiecutter.ansible_role_name}}-docker-debian9"
-    image: 'jrei/systemd-debian:latest'
+    groups:
+      - 'debian'
+    image: 'jrei/systemd-debian:9'
     privileged: True
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "{{ cookiecutter.ansible_role_name}}-docker-debian10"
-    image: 'jrei/systemd-debian:latest'
+    groups:
+      - 'debian'
+    image: 'jrei/systemd-debian:10'
     privileged: True
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "{{ cookiecutter.ansible_role_name}}-docker-ubuntu18"
+    groups:
+      - 'ubuntu'
     image: 'jrei/systemd-ubuntu:18.04'
     privileged: True
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "{{ cookiecutter.ansible_role_name}}-docker-ubuntu20"
+    groups:
+      - 'ubuntu'
     image: 'jrei/systemd-ubuntu:20.04'
     privileged: True
     volumes:
