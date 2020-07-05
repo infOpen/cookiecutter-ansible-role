@@ -14,7 +14,8 @@ jobs:
         python-version: [3.6, 3.7, 3.8]
         ansible-version: [2.8, 2.9]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -35,6 +36,16 @@ jobs:
       - tests
     runs-on: ubuntu-latest
     steps:
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ''
+          draft: false
+          prerelease: false
       - name: Upload to galaxy
         uses: robertdebock/galaxy-action@1.0.3
         with:
