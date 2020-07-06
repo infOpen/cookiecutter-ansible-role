@@ -36,6 +36,10 @@ jobs:
       - tests
     runs-on: ubuntu-latest
     steps:
+      - name: Upload to galaxy
+        uses: robertdebock/galaxy-action@1.0.3
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}
       - name: Create Release
         uses: actions/create-release@v1
         env:
@@ -46,7 +50,3 @@ jobs:
           body: ''
           draft: false
           prerelease: false
-      - name: Upload to galaxy
-        uses: robertdebock/galaxy-action@1.0.3
-        with:
-          galaxy_api_key: ${{ secrets.galaxy_api_key }}
