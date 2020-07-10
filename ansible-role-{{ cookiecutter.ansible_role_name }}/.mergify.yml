@@ -1,11 +1,113 @@
 ---
 
 pull_request_rules:
+  - name: 'Ensure all pull requests use the "develop" base branch'
+    conditions:
+      - 'base!=develop'
+    actions:
+      comment:
+        message: |
+          Hi,
+          You've select an invalid base branch, we only authorize "develop".
+          Please fix it, thanks.
+      label:
+        add:
+          - 'invalid'
+        remove:
+          - 'ready to merge'
+  - name: 'Assign all pull requests to achaussier'
+    conditions:
+      - '#assignee=0'
+    actions:
+      assign:
+        users:
+          - 'achaussier'
+  - name: 'Remove label "ready to merge" in case of CI errors'
+    conditions:
+      - 'status-failure~=.*'
+    actions:
+      label:
+        remove:
+          - 'ready to merge'
+  - name: 'Remove label "ready to merge" if pull request is closed'
+    conditions:
+      - 'closed'
+    actions:
+      label:
+        remove:
+          - 'invalid'
+          - 'ready to merge'
+  - name: 'Remove label "ready to merge" if pull request is a draft'
+    conditions:
+      - 'draft'
+    actions:
+      label:
+        remove:
+          - 'ready to merge'
+  - name: 'Remove label "conflict" if no conflict'
+    conditions:
+      - '-conflict'
+    actions:
+      label:
+        remove:
+          - 'conflict'
+  - name: 'Add label "conflict" if a conflict is detected'
+    conditions:
+      - 'conflict'
+    actions:
+      label:
+        add:
+          - 'conflict'
+        remove:
+          - 'ready to merge'
+  - name: 'Remove label "ready to merge" once pull request is merged'
+    conditions:
+      - 'merged'
+    actions:
+      label:
+        remove:
+          - 'ready to merge'
+  - name: 'Add label "ready to merge" if CI is OK'
+    conditions:
+      - 'base=develop'
+      - '-draft'
+      - 'status-success=pyup.io/safety-ci'
+      - 'status-success=tests (3.6, 2.8)'
+      - 'status-success=tests (3.6, 2.9)'
+      - 'status-success=tests (3.7, 2.8)'
+      - 'status-success=tests (3.7, 2.9)'
+      - 'status-success=tests (3.8, 2.8)'
+      - 'status-success=tests (3.8, 2.9)'
+      - '-status-failure=pyup.io/safety-ci'
+      - '-status-failure=tests (3.6, 2.8)'
+      - '-status-failure=tests (3.6, 2.9)'
+      - '-status-failure=tests (3.7, 2.8)'
+      - '-status-failure=tests (3.7, 2.9)'
+      - '-status-failure=tests (3.8, 2.8)'
+      - '-status-failure=tests (3.8, 2.9)'
+    actions:
+      label:
+        add:
+          - 'ready to merge'
   - name: 'Automatic merge PyUP updates on CI success'
     conditions:
       - 'author=pyup-bot'
       - 'base=develop'
-      - 'status-success=tests'
+      - 'status-success=pyup.io/safety-ci'
+      - 'status-success=tests (3.6, 2.8)'
+      - 'status-success=tests (3.6, 2.9)'
+      - 'status-success=tests (3.7, 2.8)'
+      - 'status-success=tests (3.7, 2.9)'
+      - 'status-success=tests (3.8, 2.8)'
+      - 'status-success=tests (3.8, 2.9)'
+      - '-status-failure=pyup.io/safety-ci'
+      - '-status-failure=tests (3.6, 2.8)'
+      - '-status-failure=tests (3.6, 2.9)'
+      - '-status-failure=tests (3.7, 2.8)'
+      - '-status-failure=tests (3.7, 2.9)'
+      - '-status-failure=tests (3.8, 2.8)'
+      - '-status-failure=tests (3.8, 2.9)'
     actions:
+      delete_head_branch: {}
       merge:
         method: 'merge'
