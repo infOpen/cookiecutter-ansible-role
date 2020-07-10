@@ -89,6 +89,13 @@ pull_request_rules:
       label:
         add:
           - 'ready to merge'
+  - name: 'Add label "dependencies" on PyUP pull requests'
+    conditions:
+      - 'author=pyup-bot'
+    actions:
+      label:
+        add:
+          - 'dependencies'
   - name: 'Automatic merge PyUP updates on CI success'
     conditions:
       - 'author=pyup-bot'
