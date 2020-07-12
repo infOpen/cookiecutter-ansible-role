@@ -1,0 +1,49 @@
+---
+
+- name: "bug"
+  color: "D73A4A"
+  description: "Something isn't working"
+
+- name: "conflict"
+  color: "EAD831"
+  description: "Conflict occurred, pull request broken"
+
+- name: "dependencies"
+  color: "0949F7"
+  description: "Relates to project dependencies"
+
+- name: "documentation"
+  color: "0075CA"
+  description: "Improvements or additions to documentation"
+
+- name: "duplicate"
+  color: "CFD3D7"
+  description: "This issue or pull request already exists"
+
+- name: "enhancement"
+  color: "A2EEEF"
+  description: "New feature or request"
+
+- name: "good first issue"
+  color: "7057FF"
+  description: "Good issue for first-time contributors"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Extra attention is needed"
+
+- name: "invalid"
+  color: "FFB999"
+  description: "This doesn't seem right"
+
+- name: "question"
+  color: "D876E3"
+  description: "Further information is requested"
+
+- name: "ready to merge"
+  color: "C4C8FC"
+  description: "This pull request passed all CI tests sucessfully"
+
+- name: "wontfix"
+  color: "FFFFFF"
+  description: "This will not be worked on"
