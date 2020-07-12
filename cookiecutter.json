@@ -15,6 +15,7 @@
     "company_url": "http://foo.bar",
     "_copy_without_render": [
       ".github/workflows/ci.yml",
+      ".github/workflows/repo-config.yml",
       "molecule/default/create.yml",
       "molecule/default/destroy.yml",
       "molecule/default/Dockerfile.j2"
