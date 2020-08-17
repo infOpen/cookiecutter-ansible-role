@@ -1,7 +1,7 @@
 ansible-lint==4.2.0
 docker==4.3.0
 flake8==3.8.3
-molecule==3.0.6
+molecule==3.0.7
 pytest==6.0.1
 testinfra==5.2.2
 tox==3.19.0
