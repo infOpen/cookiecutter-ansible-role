@@ -1,5 +1,5 @@
 ansible-lint==5.2.0
-docker==5.0.2
+docker==5.0.3
 flake8==3.8.4
 molecule==3.5.2
 pytest==6.2.5
