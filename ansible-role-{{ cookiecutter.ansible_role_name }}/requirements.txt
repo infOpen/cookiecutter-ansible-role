@@ -4,4 +4,4 @@ flake8==4.0.1
 molecule==3.5.2
 pytest==6.2.5
 testinfra==6.0.0
-tox==3.24.4
+tox==4.12.0
